@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 int main(){
     
     // this is a comment.
@@ -11,7 +12,8 @@ int main(){
         #include:
             #include <>: includes a library (header),
             <stdio.h>: basic input-output header,
-            <stdbool.h>: imports the 'bool' variable;
+            <stdbool.h>: imports the 'bool' variable,
+            <string.h>: imports standard string methods;
 
         functions:
             variable_returned function_name(parameters) {
@@ -31,11 +33,14 @@ int main(){
             Text:
                 char: singular character, (1 byte),
                 char varname[]: array of characters (the number of bytes will be equal to the number you put inside the brackets, can be left empty); 
-                    sizeof(varname): gets the length of the character array;
+                    sizeof(varname): gets the length of a character array;
+                    strlen(varname): gets the length of a character array (requires de string library);
+                    varname[int] = "character": change a specific character inside of an array of characters, (character 1 = 0, character 2 = 1...);    
         
         Print:
             printf(""); : outputs a text in the terminal
                 \n: jumps a line;
+                \0: removes the jump of line;
 
         User Input:
             scanf("format_specifier", &variable): will take user input and set the result in the variable choosen, (DOESNT SUPPORT SPACES)
