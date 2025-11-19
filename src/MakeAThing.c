@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <math.h>
 int main(){
     
     // this is a comment.
@@ -14,6 +15,7 @@ int main(){
             <stdio.h>: basic input-output header,
             <stdbool.h>: imports the 'bool' variable,
             <string.h>: imports standard string methods;
+            <math.h>: imports standard math methods
 
         functions:
             variable_returned function_name(parameters) {
@@ -25,11 +27,12 @@ int main(){
             in the main function, you return 0 at the end of it.
         
         Variables:
-            Numbers:
+            Numbers and others:
                 int: non-decimal value (4 bytes),
                 float: decimal or non-decimal value (4 bytes),
                 double: like a float, but can store more values (8 bytes),
                 bool (needs external header 'stdbool.h'): can store a true or false value (the true value can be 1 and the false value can be 0, 1 byte);
+                const: comes before the variable type (ex: const float pi = 3.14;), makes the variable not be able to be overwritten;
             Text:
                 char: singular character, (1 byte),
                 char varname[]: array of characters (the number of bytes will be equal to the number you put inside the brackets, can be left empty); 
@@ -65,6 +68,18 @@ int main(){
                 %: remainder (modulus),
                 var--: will remove 1 from a variable,
                 var++: will add 1 to a variable;
+
+        mathematics methods (requires the standard math library):
+                sqrt(number): gives the square root of a specified number,
+                pow(number, number2): returns a number to the power of a specified number (number2),
+                round(number): rounds a specified number;
+                ceil(number): rounds to the highest number;
+                floor(number): rounds to the lowest number;
+                abs(negative_number): return a negative number into a positive;
+                log(number): return the natural logarithm of the number;
+                sin(number): return the sine of the number;
+                cos(number): return the cosine of the number;
+                tan(number): return the tangent of the number;
                 
 
    */
