@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <math.h>
+#include <windows.h>
 
 void Calc(char op, float n1, float n2){
     if (op == '+') {
@@ -38,7 +39,8 @@ int main(){
             <stdio.h>: basic input-output header,
             <stdbool.h>: imports the 'bool' variable,
             <string.h>: imports standard string methods;
-            <math.h>: imports standard math methods
+            <math.h>: imports standard math methods;
+            <windows.h>: imports standard windows methods;
 
         functions:
              ↓ can be void for nill
@@ -133,7 +135,7 @@ int main(){
                 var--: will remove 1 from a variable,
                 var++: will add 1 to a variable;
 
-        mathematics methods (requires the standard math library):
+        mathematics methods (all requires the standard math library):
                 sqrt(number): gives the square root of a specified number,
                 pow(number, number2): returns a number to the power of a specified number (number2),
                 round(number): rounds a specified number;
@@ -156,13 +158,26 @@ int main(){
                 run code once before the while loop
             }while(condition == true) --checks the condition then decide to loop the code or not.
                 
-
+        for loop:
+            repeats a code a certain amount of time,
+            for(initialization; condition; update){
+                run code
+            }
+                
+        Sleep: (requires the standard windows or unix library)
+            makes the program wait a certain amount of time before continuing,
+            Sleep(time); (the time is in miliseconds)
    */
     float n1;
     float n2;
     char op;
     bool run = false;
     char WRun;
+
+    for(int i = 3; i > 0; i--){
+        Sleep(1000);
+        printf("%d \n", i);
+    }
 
     while(!run) {
         printf("Wanna start? (Y, N): \n");
