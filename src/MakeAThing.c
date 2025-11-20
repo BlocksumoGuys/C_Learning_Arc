@@ -6,6 +6,13 @@
 #include <stdlib.h>
 #include <time.h>
 
+typedef char string[16];
+typedef struct{
+    char name[16];
+    int age;
+    float gpa;
+    bool fulltime;
+}Student;
 int random(int min, int max);
 
 void Calc(char op, float n1, float n2){
@@ -37,6 +44,7 @@ int main(){
             2. all statements in C ends with a ';'.
             3. for handling singular characters, use '', for an array of characters, use "".
             4. Variables that have been set outside of a function will be a global variable.
+            5. C is case-sensitive
 
         #include:
             #include <>: includes a library (header),
@@ -73,6 +81,9 @@ int main(){
             }
             The conditions needs to be true for the code inside the if statement to work.
 
+            short hand if statements:
+                (condition) ? value_if_true : value_if_false;
+
         Switch: 
             alternative to if statements,
             switch(variable) {
@@ -108,15 +119,15 @@ int main(){
             Text:
                 char: singular character, (1 byte),
                 char varname[]: array of characters (the number of bytes will be equal to the number you put inside the brackets, can be left empty); 
-                    sizeof(varname): gets the length of a character array;
-                    strlen(varname): gets the length of a character array (requires de string library);
-                    varname[int] = "character": change a specific character inside of an array of characters, (character 1 = 0, character 2 = 1...);  
             Extras:
                 const: comes before the variable type (ex: const float pi = 3.14;), makes the variable not be able to be overwritten;
                 arrays: a variable that can hold more than one value (ex: int list[] = {6, 7, 4, 1}, the "[]" next to the variables name turn the variable into an array);
                     #to get the number of elements inside an array, you can do 'sizeof(array) / sizeof(array[0])',
                     #to have a clear cache of an unasigned array, you set the value of the array to {0},
-                    2 dimensional arrays: arrays that can store other arrays, (ex: int numbers[][3] = {{1,2,3}, {4,5,6}, {7,8,9}}; the numbers of array in the beginning MUST be set!!!);
+                    2 dimensional arrays: arrays that can store other arrays, (ex: int numbers[][3] = {{1,2,3}, {4,5,6}, {7,8,9}}; the max number of array in the beginning MUST be set!!!);
+                typedef: creates a variable type to simplify complex types by using typedef new_type_name type (ex: typdef string char[16]);
+                enums: a created data-type that consist of named integer constants (ex: enum Day{MONDAY=6, TUESDAY=7, WEDNESDAY=4}; enum Day today = TUESDAY (today is now equal to to TUESDAY (7)));
+
 
         
         Print:
@@ -183,7 +194,21 @@ int main(){
         Sleep: (requires the standard windows or unix library)
             makes the program wait a certain amount of time before continuing,
             Sleep(time); (the time is in miliseconds)
+
+        Structures: an array wich we can store, create or modify certain elements inside of it, (ex: typedef struct{char name[16]; int age; float gpa; bool fulltime}Student)
+            Student student1 = {"bob", 19, 3.6, false};
+
+        String funkyness:
+                sizeof(varname): gets the length of a character array;
+                strlen(varname): gets the length of a character array (requires de string library);
+                varname[int] = "character": change a specific character inside of an array of characters, (character 1 = 0, character 2 = 1...);
+                strcpy(destination, string): will safely copy a string to a destination including the null-terminator;
+                (really usefull for structures since its the only way to change a string inside of the array)
    */
+    Student student1 = {"bob", 19, 3.6, false};
+    strcpy(student1.name, "bill");
+    student1.age = 67;
+    printf("%s \n", student1.name);
     float n1;
     float n2;
     char op;
