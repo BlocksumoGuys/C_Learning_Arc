@@ -3,6 +3,14 @@
 #include <string.h>
 #include <math.h>
 #include <windows.h>
+#include <stdlib.h>
+#include <time.h>
+
+int random(int min, int max) {
+    srand(time(0));
+    int r = (rand() % (max - min + 1)) + min;
+    return r;
+}
 
 void Calc(char op, float n1, float n2){
     if (op == '+') {
@@ -41,6 +49,8 @@ int main(){
             <string.h>: imports standard string methods;
             <math.h>: imports standard math methods;
             <windows.h>: imports standard windows methods;
+            <time.h>: imports standard time methods;
+            <stdlib.h>: imports the method of smt i forgot;
 
         functions:
              ↓ can be void for nill
@@ -163,7 +173,10 @@ int main(){
             for(initialization; condition; update){
                 run code
             }
-                
+            
+            break; will exit out of a for loop, (works for while loop too),
+            continue; will skip the current cycle of a for loop, (works for while loop too);
+
         Sleep: (requires the standard windows or unix library)
             makes the program wait a certain amount of time before continuing,
             Sleep(time); (the time is in miliseconds)
@@ -173,6 +186,7 @@ int main(){
     char op;
     bool run = false;
     char WRun;
+    printf("%d \n", random(41, 67));
 
     for(int i = 3; i > 0; i--){
         Sleep(1000);
