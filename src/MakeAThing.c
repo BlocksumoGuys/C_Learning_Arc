@@ -31,6 +31,7 @@ int main(){
             1. Each C scripts need atleast a main function named 'main'
             2. all statements in C ends with a ';'.
             3. for handling singular characters, use '', for an array of characters, use "".
+            4. Variables that have been set outside of a function will be a global variable.
 
         #include:
             #include <>: includes a library (header),
@@ -48,6 +49,9 @@ int main(){
 
             return value; : will return a value when the function called will finish (IT NEEDS TO BE AT THE END OF THE FUNCTION), its also highly suggested that
             in the main function, you return 0 at the end of it.
+
+            variable_returned function_name(parameters); : prototype function, can be set before the main function so the
+            main function can call a function that is set after the main one;
 
         If statements:
             if (condition) {
@@ -140,12 +144,34 @@ int main(){
                 sin(number): return the sine of the number;
                 cos(number): return the cosine of the number;
                 tan(number): return the tangent of the number;
+
+        while loop:
+            function that continue the code inside it while the condition remains true,
+            while(condition == true) {
+                run code until the condition is false,
+            }
+
+            you can also do:
+            do{
+                run code once before the while loop
+            }while(condition == true) --checks the condition then decide to loop the code or not.
                 
 
    */
     float n1;
     float n2;
     char op;
+    bool run = false;
+    char WRun;
+
+    while(!run) {
+        printf("Wanna start? (Y, N): \n");
+        scanf(" %c", &WRun);
+        if (WRun == 'Y' || WRun == 'y') { 
+            run = true;
+        }
+    }
+
     printf("lets do math! input first number: ");
     scanf("%f", &n1);
     printf("let put second number: ");
