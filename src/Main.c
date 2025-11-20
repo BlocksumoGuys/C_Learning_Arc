@@ -127,6 +127,7 @@ int main(){
                     2 dimensional arrays: arrays that can store other arrays, (ex: int numbers[][3] = {{1,2,3}, {4,5,6}, {7,8,9}}; the max number of array in the beginning MUST be set!!!);
                 typedef: creates a variable type to simplify complex types by using typedef new_type_name type (ex: typdef string char[16]);
                 enums: a created data-type that consist of named integer constants (ex: enum Day{MONDAY=6, TUESDAY=7, WEDNESDAY=4}; enum Day today = TUESDAY (today is now equal to to TUESDAY (7)));
+                FILE: as the name suggest, a file data type;
 
 
         
@@ -149,6 +150,7 @@ int main(){
                 %s: parameter for a character table (aka strings, aka 'char varname[];'),
                 %d: parameter for booleans (it will result 1 if the bool is true, 0 if not);
                 %p: parameter for pointers;
+                %ld: parameter for long decimals;
 
         arithmetic operators:
                 =: equals,
@@ -200,17 +202,31 @@ int main(){
             Student student1 = {"bob", 19, 3.6, false};
 
         String funkyness:
-                sizeof(varname): gets the length of a character array;
-                strlen(varname): gets the length of a character array (requires de string library);
-                varname[int] = "character": change a specific character inside of an array of characters, (character 1 = 0, character 2 = 1...);
-                strcpy(destination, string): will safely copy a string to a destination including the null-terminator,
-                (really usefull for structures since its the only way to change a string inside of the array);
+            sizeof(varname): gets the length of a character array;
+            strlen(varname): gets the length of a character array (requires de string library);
+            varname[int] = "character": change a specific character inside of an array of characters, (character 1 = 0, character 2 = 1...);
+            strcpy(destination, string): will safely copy a string to a destination including the null-terminator,
+            (really usefull for structures since its the only way to change a string inside of the array);
 
         Pointers: a variable that stores the memory adress of another variable.
             *: declare a variable as a pointer (ex: int *pAge;),
             &; gets the memory adress of a variable (ex: int *pAge = &age;),
             *: dereference a pointer (ex: int *pAge = &age; int retrieved = *pAge;), it can also be used to change the value of the memory adress (ex: *pAge = 20);
-            
+        
+        Files (needs the standard input output library):
+            FILE pointer_variable = fopen("output.txt", "mode"): will open the file in either read mode (r) or write mode (w); in write mode, it will create the file if it doesnt exist
+            fclose(pointer_to_file); : closes the file, used at the end of the final file action;
+            fprintf(file, "%s", text); : as it says, write the text into the specified file;
+            fgets(buffer, sizeof(buffer), file): sets the buffer to the content of a text;
+
+        Memory Allocation: (REQUIRES THE STD LIB!!!!)
+            malloc(byte_to_reserve): will alocate a specific amount of byte for a variable, contains garbage values (ex: int *grades = malloc(number * sizeof(int)));
+            calloc(number_of_elements, size_of_each_elements): functions like malloc, but doesnt contain garbage values, so all the values are 0 initialy;
+            realloc(pointer, new_size): reallocate a pointer with a different memory size;
+            free(pointer_to_array): will free the alocated space we reserved with malloc, YOU CANT USE THE POINTER AFTER THAT AND WHEN YOU FREE THE MEMORY, SET THE POINTER TO NULL!!!!;
+
+
+
 
    */
     Student student1 = {"bob", 19, 3.6, false};
