@@ -2,6 +2,22 @@
 #include <stdbool.h>
 #include <string.h>
 #include <math.h>
+
+void Calc(char op, float n1, float n2){
+    if (op == '+') {
+        printf("you result is %.1f!", n1 + n2);
+    }
+    else if (op == '*') {
+        printf("you result is %.1f!", n1 * n2);
+    }
+    else if (op == '/') {
+        printf("you result is %.1f!", n1 / n2);
+    }
+    else if (op == '-') {
+        printf("you result is %.1f!", n1 - n2);
+    }
+}
+
 int main(){
     
     // this is a comment.
@@ -18,6 +34,7 @@ int main(){
             <math.h>: imports standard math methods
 
         functions:
+             ↓ can be void for nill
             variable_returned function_name(parameters) {
                 your code here;            
             }
@@ -25,7 +42,30 @@ int main(){
 
             return value; : will return a value when the function called will finish (IT NEEDS TO BE AT THE END OF THE FUNCTION), its also highly suggested that
             in the main function, you return 0 at the end of it.
-        
+
+        If statements:
+            if (condition) {
+                run code here;
+            }
+            else if (other_condition) {
+                run code here;
+            }
+            else {
+                run code here;
+            }
+            The conditions needs to be true for the code inside the if statement to work.
+
+        Relational Operators:
+            ==: equal to,
+            !=: not equal to,
+            >: greater than,
+            <: lesser than,
+            >=: greater or equal to,
+            <=: lesser or equal to,
+            &&: AND,
+            ||: OR,
+            !condition: NOT;
+
         Variables:
             Numbers and others:
                 int: non-decimal value (4 bytes),
@@ -83,12 +123,17 @@ int main(){
                 
 
    */
-    int age = 67;
-    float n = 6.7;
-    
-    printf("joke\n");
-    printf("The statement above me is a joke. \n");
-    printf("I am %d years old \n", age);
-    printf("your grade is maybe like %.1f", n);
+    float n1;
+    float n2;
+    char op;
+    printf("lets do math! input first number: ");
+    scanf("%f", &n1);
+    printf("let put second number: ");
+    scanf(" %f", &n2);
+    printf("give operator (*, +, -, /): ");
+    scanf(" %c", &op);
+
+    Calc(op, n1, n2);
+
     return 0;
 }
