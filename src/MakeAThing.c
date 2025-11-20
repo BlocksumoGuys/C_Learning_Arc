@@ -61,6 +61,20 @@ int main(){
             }
             The conditions needs to be true for the code inside the if statement to work.
 
+        Switch: 
+            alternative to if statements,
+            switch(variable) {
+                case 1:
+                    does thing that happens when variable is equal to 1
+                    break; <---- to break out of the switch
+                case 2:
+                    does thing that happens when variable is equal to 2
+                    break; <---- to break out of the switch
+                default:
+                    does thing that happens when neither of the previous cases is equal to the variable
+                    (doesnt need a break)
+            }
+
         Relational Operators:
             ==: equal to,
             !=: not equal to,
@@ -89,7 +103,7 @@ int main(){
         Print:
             printf(""); : outputs a text in the terminal
                 \n: jumps a line;
-                \0: removes the jump of line;
+                \0: string terminator;
 
         User Input:
             scanf("format_specifier", &variable): will take user input and set the result in the variable choosen, (DOESNT SUPPORT SPACES)
