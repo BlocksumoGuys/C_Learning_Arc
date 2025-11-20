@@ -31,7 +31,7 @@ int main(){
             1. Each C scripts need atleast a main function named 'main'
             2. all statements in C ends with a ';'.
             3. for handling singular characters, use '', for an array of characters, use "".
-            
+
         #include:
             #include <>: includes a library (header),
             <stdio.h>: basic input-output header,
