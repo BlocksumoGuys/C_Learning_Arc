@@ -6,11 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-int random(int min, int max) {
-    srand(time(0));
-    int r = (rand() % (max - min + 1)) + min;
-    return r;
-}
+int random(int min, int max);
 
 void Calc(char op, float n1, float n2){
     if (op == '+') {
@@ -114,7 +110,14 @@ int main(){
                 char varname[]: array of characters (the number of bytes will be equal to the number you put inside the brackets, can be left empty); 
                     sizeof(varname): gets the length of a character array;
                     strlen(varname): gets the length of a character array (requires de string library);
-                    varname[int] = "character": change a specific character inside of an array of characters, (character 1 = 0, character 2 = 1...);    
+                    varname[int] = "character": change a specific character inside of an array of characters, (character 1 = 0, character 2 = 1...);  
+            Extras:
+                const: comes before the variable type (ex: const float pi = 3.14;), makes the variable not be able to be overwritten;
+                arrays: a variable that can hold more than one value (ex: int list[] = {6, 7, 4, 1}, the "[]" next to the variables name turn the variable into an array);
+                    #to get the number of elements inside an array, you can do 'sizeof(array) / sizeof(array[0])',
+                    #to have a clear cache of an unasigned array, you set the value of the array to {0},
+                    2 dimensional arrays: arrays that can store other arrays, (ex: int numbers[][3] = {{1,2,3}, {4,5,6}, {7,8,9}}; the numbers of array in the beginning MUST be set!!!);
+
         
         Print:
             printf(""); : outputs a text in the terminal
@@ -211,4 +214,10 @@ int main(){
     Calc(op, n1, n2);
 
     return 0;
+}
+
+int random(int min, int max) {
+    srand(time(0));
+    int r = (rand() % (max - min + 1)) + min;
+    return r;
 }
