@@ -148,6 +148,7 @@ int main(){
                 %c: parameter for a character,
                 %s: parameter for a character table (aka strings, aka 'char varname[];'),
                 %d: parameter for booleans (it will result 1 if the bool is true, 0 if not);
+                %p: parameter for pointers;
 
         arithmetic operators:
                 =: equals,
@@ -202,13 +203,21 @@ int main(){
                 sizeof(varname): gets the length of a character array;
                 strlen(varname): gets the length of a character array (requires de string library);
                 varname[int] = "character": change a specific character inside of an array of characters, (character 1 = 0, character 2 = 1...);
-                strcpy(destination, string): will safely copy a string to a destination including the null-terminator;
-                (really usefull for structures since its the only way to change a string inside of the array)
+                strcpy(destination, string): will safely copy a string to a destination including the null-terminator,
+                (really usefull for structures since its the only way to change a string inside of the array);
+
+        Pointers: a variable that stores the memory adress of another variable.
+            *: declare a variable as a pointer (ex: int *pAge;),
+            &; gets the memory adress of a variable (ex: int *pAge = &age;),
+            *: dereference a pointer (ex: int *pAge = &age; int retrieved = *pAge;), it can also be used to change the value of the memory adress (ex: *pAge = 20);
+            
+
    */
     Student student1 = {"bob", 19, 3.6, false};
     strcpy(student1.name, "bill");
     student1.age = 67;
     printf("%s \n", student1.name);
+
     float n1;
     float n2;
     char op;
