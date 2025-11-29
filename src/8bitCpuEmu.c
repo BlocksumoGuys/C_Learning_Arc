@@ -11,6 +11,22 @@ typedef struct{
     uint8_t halt;
 }CPU;
 
+typedef enum{
+    LDA = 0x01,
+    LDB = 0x02,
+    ADD = 0x03,
+    ADDI = 0x04,
+    SUB = 0x05,
+    SUBI = 0x06,
+    MULT = 0x07,
+    MULTI = 0x08,
+    NOP = 0x09,
+    JMP = 0x10,
+    BEQ = 0x11,
+    BEQZ = 0x12,
+    NBEQ = 0x13,
+}INSTRUCTIONS;
+
 void cpu_Reset(CPU *cpu){
     cpu->A = 0;
     cpu->B = 0;
@@ -30,13 +46,13 @@ void cpu_load_execute(CPU *cpu, uint8_t opcode){
     if(opcode){
     switch (opcode)
         {
-        case 0x01: // Load A
+        case LDA: // Load A
             cpu->A = cpu->memory[cpu->PC++];
             break;
-        case 0x02: // Load B
+        case LDB: // Load B
             cpu->B = cpu->memory[cpu->PC++];
             break;
-        case 0x03: // ADDR
+        case ADD: // ADD
             uint8_t destination = cpu->memory[cpu->PC++];
             uint8_t src = cpu->memory[cpu->PC++];
 
@@ -45,13 +61,13 @@ void cpu_load_execute(CPU *cpu, uint8_t opcode){
 
             *reg_dest = *reg_dest + *reg_src;
             break;
-        case 0x04: // ADDI
+        case ADDI: // ADDI
             uint8_t dest = cpu->memory[cpu->PC++];
             uint8_t v1 = cpu->memory[cpu->PC++];
             uint8_t v2 = cpu->memory[cpu->PC++];
             cpu->memory[dest] = v1 + v2;
             break;
-        case 0x05: // SUBR
+        case SUB: // SUB
             uint8_t destination = cpu->memory[cpu->PC++];
             uint8_t src = cpu->memory[cpu->PC++];
 
@@ -60,13 +76,13 @@ void cpu_load_execute(CPU *cpu, uint8_t opcode){
 
             *reg_dest = *reg_dest - *reg_src;
             break;
-        case 0x06: // SUBI
+        case SUBI: // SUBI
             uint8_t dest = cpu->memory[cpu->PC++];
             uint8_t v1 = cpu->memory[cpu->PC++];
             uint8_t v2 = cpu->memory[cpu->PC++];
             cpu->memory[dest] = v1 - v2;
             break;
-        case 0x07: // MULTR
+        case MULT: // MULT
             uint8_t destination = cpu->memory[cpu->PC++];
             uint8_t src = cpu->memory[cpu->PC++];
 
@@ -75,15 +91,33 @@ void cpu_load_execute(CPU *cpu, uint8_t opcode){
 
             *reg_dest = *reg_dest * *reg_src;
             break;
-        case 0x08: // MULTI
+        case MULTI: // MULTI
             uint8_t dest = cpu->memory[cpu->PC++];
             uint8_t v1 = cpu->memory[cpu->PC++];
             uint8_t v2 = cpu->memory[cpu->PC++];
             cpu->memory[dest] = v1 * v2;
             break;
-        case 0x09: // NOP
+        case NOP: // NOP
             cpu->PC++;
             break;
+        case JMP:
+            cpu->PC = cpu->memory[cpu->PC++];
+            break;
+        case BEQ:
+            if (cpu->memory[cpu->PC++] == cpu->memory[cpu->PC++]){
+                cpu->PC = cpu->memory[cpu->PC++];
+            }
+            break;
+        case BEQZ:
+            if (cpu->memory[cpu->PC++] == 0){
+                cpu->PC = cpu->memory[cpu->PC++];
+            }
+            break;
+        case NBEQ:
+            if (!cpu->memory[cpu->PC++] == cpu->memory[cpu->PC++]){
+                cpu->PC = cpu->memory[cpu->PC++];
+            }
+            break;        
         case 0xFF:
             cpu->halt = 1;
             break;
