@@ -46,13 +46,15 @@ void cpu_load_execute(CPU *cpu, uint8_t opcode){
     if(opcode){
     switch (opcode)
         {
-        case LDA: // Load A
+        case LDA: { // Load A
             cpu->A = cpu->memory[cpu->PC++];
             break;
-        case LDB: // Load B
+        }
+        case LDB: { // Load B
             cpu->B = cpu->memory[cpu->PC++];
             break;
-        case ADD: // ADD
+        }
+        case ADD: { // ADD
             uint8_t destination = cpu->memory[cpu->PC++];
             uint8_t src = cpu->memory[cpu->PC++];
 
@@ -61,13 +63,15 @@ void cpu_load_execute(CPU *cpu, uint8_t opcode){
 
             *reg_dest = *reg_dest + *reg_src;
             break;
-        case ADDI: // ADDI
+        }
+        case ADDI: { // ADDI
             uint8_t dest = cpu->memory[cpu->PC++];
             uint8_t v1 = cpu->memory[cpu->PC++];
             uint8_t v2 = cpu->memory[cpu->PC++];
             cpu->memory[dest] = v1 + v2;
             break;
-        case SUB: // SUB
+        }
+        case SUB: { // SUB
             uint8_t destination = cpu->memory[cpu->PC++];
             uint8_t src = cpu->memory[cpu->PC++];
 
@@ -76,13 +80,15 @@ void cpu_load_execute(CPU *cpu, uint8_t opcode){
 
             *reg_dest = *reg_dest - *reg_src;
             break;
-        case SUBI: // SUBI
+        }
+        case SUBI: { // SUBI
             uint8_t dest = cpu->memory[cpu->PC++];
             uint8_t v1 = cpu->memory[cpu->PC++];
             uint8_t v2 = cpu->memory[cpu->PC++];
             cpu->memory[dest] = v1 - v2;
             break;
-        case MULT: // MULT
+        }
+        case MULT: { // MULT
             uint8_t destination = cpu->memory[cpu->PC++];
             uint8_t src = cpu->memory[cpu->PC++];
 
@@ -91,12 +97,14 @@ void cpu_load_execute(CPU *cpu, uint8_t opcode){
 
             *reg_dest = *reg_dest * *reg_src;
             break;
-        case MULTI: // MULTI
+        }
+        case MULTI: { // MULTI
             uint8_t dest = cpu->memory[cpu->PC++];
             uint8_t v1 = cpu->memory[cpu->PC++];
             uint8_t v2 = cpu->memory[cpu->PC++];
             cpu->memory[dest] = v1 * v2;
             break;
+        } 
         case NOP: // NOP
             cpu->PC++;
             break;
